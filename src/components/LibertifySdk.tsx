@@ -3,6 +3,7 @@ import { createStyles } from "../helpers/createStyles";
 import "../styles/font.css";
 import "../styles/main.css";
 import AssetTable from "./AssetTable";
+import { ChevronUp } from 'react-feather';
 
 interface SDKConfig {
   styles: {
@@ -19,8 +20,8 @@ export interface LibertifySdkProps {
 export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
   const renderItem = (a) => {
     return (
-      <div>
-        <div style={styles.flex1}></div>
+      <div style={styles.item}>
+        <div style={styles.status}><ChevronUp color="green"/></div>
         <div style={{ flex: 3 }}>AIR LIQUIDE</div>
         <div style={styles.flex1}>4240</div>
         <div style={styles.flex1}>35.75%</div>
@@ -33,13 +34,13 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
       <AssetTable
         title="MON PORTEFEUILLE"
         style={styles.table}
-        data={[1, 2]}
+        data={[1, 2, 3, 4]}
         renderItem={renderItem}
       />
       <AssetTable
         title="OPTIMISATION STATISTIQUE"
         style={styles.table}
-        data={[1, 2]}
+        data={[1, 2, 3, 4]}
         renderItem={renderItem}
         color="green"
       />
@@ -59,4 +60,12 @@ const styles = createStyles({
   flex1: {
     flex: 1,
   },
+  item: {
+    padding: '10px 0'
+  },
+  status: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center'
+  }
 });
