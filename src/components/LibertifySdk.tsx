@@ -3,7 +3,8 @@ import { createStyles } from "../helpers/createStyles";
 import "../styles/font.css";
 import "../styles/main.css";
 import AssetTable from "./AssetTable";
-import { ChevronUp } from 'react-feather';
+import { BiTransfer } from 'react-icons/bi';
+import { IoMdArrowDropup } from 'react-icons/io';
 
 interface SDKConfig {
   styles: {
@@ -21,7 +22,7 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
   const renderItem = (a) => {
     return (
       <div style={styles.item}>
-        <div style={styles.status}><ChevronUp color="green"/></div>
+        <div style={styles.status}><IoMdArrowDropup color="green" size={20}/></div>
         <div style={{ flex: 3 }}>AIR LIQUIDE</div>
         <div style={styles.flex1}>4240</div>
         <div style={styles.flex1}>35.75%</div>
@@ -37,6 +38,7 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
         data={[1, 2, 3, 4]}
         renderItem={renderItem}
       />
+      <BiTransfer color="green" size={40}/>
       <AssetTable
         title="OPTIMISATION STATISTIQUE"
         style={styles.table}
