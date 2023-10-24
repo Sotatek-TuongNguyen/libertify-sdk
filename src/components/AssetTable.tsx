@@ -7,6 +7,7 @@ interface AssetTableProps {
   data?: any[];
   renderItem?: (any) => React.ReactNode;
   title?: string;
+  percent: number;
 }
 
 export default function AssetTable({
@@ -15,12 +16,13 @@ export default function AssetTable({
   data = [],
   renderItem = () => null,
   title = "",
+  percent = 0,
 }: AssetTableProps) {
   return (
     <div style={{ ...style, ...styles.container, borderColor: color }}>
       <div style={{ ...styles.header, backgroundColor: color }}>
         <div style={styles.textHeader}>{title}</div>
-        <div style={styles.percentHeader}>3%</div>
+        <div style={styles.percentHeader}>{percent.toFixed(1)}%</div>
       </div>
       <div style={styles.listHeader}>
         <div style={styles.flex1}></div>
@@ -53,7 +55,7 @@ const styles = createStyles({
   percentHeader: {
     color: "white",
     fontSize: 22,
-    fontFamily: 'GTWalsheim-Bd'
+    fontFamily: "GTWalsheim-Bd",
   },
   flex1: {
     flex: 1,

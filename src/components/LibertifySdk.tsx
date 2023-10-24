@@ -31,7 +31,6 @@ const assets = [
 export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
   const [optimizePortfolio, { data }] =
     useOptimizePortfolioPortfolioOptimizePostMutation();
-  console.log({data});
 
   useEffect(() => {
     optimizePortfolio({
@@ -91,6 +90,7 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
           style={styles.table}
           data={assets}
           renderItem={renderItem}
+          percent={(data?.current_risk_level || 0) * -100}
         />
         <BiTransfer color="green" size={40} />
         <AssetTable
@@ -99,6 +99,7 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
           data={assets}
           renderItem={renderItem}
           color="green"
+          percent={(data?.optimized_risk_level || 0) * -100}
         />
       </div>
 
