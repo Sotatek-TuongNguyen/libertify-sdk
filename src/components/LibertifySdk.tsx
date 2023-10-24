@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createStyles } from "../helpers/createStyles";
 import "../styles/font.css";
 import "../styles/main.css";
@@ -6,6 +6,7 @@ import AssetTable from "./AssetTable";
 import { BiTransfer } from "react-icons/bi";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import Toggle from "react-toggle";
+import { useOptimizePortfolioPortfolioOptimizePostMutation } from "../store/rtkquery/libertifyApi";
 
 interface SDKConfig {
   styles: {
@@ -28,6 +29,40 @@ const assets = [
 ];
 
 export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
+  const [optimizePortfolio, { data }] =
+    useOptimizePortfolioPortfolioOptimizePostMutation();
+  console.log({data});
+
+  useEffect(() => {
+    optimizePortfolio({
+      optimizationRequest: {
+        asset_class: "Equity",
+        currency: "EUR",
+        user_id: "123",
+        portfolio: {
+          composition: [
+            {
+              ticker: "GLE.PA",
+              quantity: 25,
+            },
+            {
+              ticker: "TTE.PA",
+              quantity: 18,
+            },
+            {
+              ticker: "FDJ.PA",
+              quantity: 50,
+            },
+            {
+              ticker: "AI.PA",
+              quantity: 10,
+            },
+          ],
+        },
+      },
+    });
+  }, []);
+
   const renderItem = (asset) => {
     const isUp = asset.percent > 10;
     const color = isUp ? "green" : "red";

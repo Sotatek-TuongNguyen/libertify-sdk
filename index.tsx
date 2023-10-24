@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import LibertifySdk, { LibertifySdkProps } from "./src/components/LibertifySdk";
-import "react-toggle/style.css" 
+import { LibertifySdkProps } from "./src/components/LibertifySdk";
+import App from "./src/App";
+import "react-toggle/style.css";
 
 const libertify = {
   init: (element, { config, apiKey }: LibertifySdkProps) => {
     ReactDOM.createRoot(element).render(
-      <LibertifySdk apiKey={apiKey} config={config} />
+      <App apiKey={apiKey} config={config} />
     );
   },
 };
