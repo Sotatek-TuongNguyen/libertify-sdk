@@ -7,6 +7,8 @@ import { BiTransfer } from "react-icons/bi";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import Toggle from "react-toggle";
 import { useOptimizePortfolioPortfolioOptimizePostMutation } from "../store/rtkquery/libertifyApi";
+import Button from "./Button";
+import Text from "./Text";
 
 interface SDKConfig {
   styles: {
@@ -84,6 +86,19 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
 
   return (
     <div id="libertify" style={styles.container}>
+      <Text style={{ display: "inline", padding: 10 }}>
+        Nous venons d'auditer votre portefeuille actuel et à ce jour celui-ci
+        comporte un risque de perte pouvant dépasser{" "}
+        <Text style={{ display: "inline", color: "red" }}>€3,567</Text> en
+        seulement 1 mois soit{" "}
+        <Text style={{ display: "inline", color: 'red' }}>
+          7% de l'ensemble de la valeur de votre portefeuille
+        </Text>{" "}
+        <Text style={{ display: "inline", color: 'green' }}>
+          Vous pouvez dès maintenant passer ce risque à 2% en sélectionnant son
+          optimisation statistique générée par Al.
+        </Text>
+      </Text>
       <div style={styles.wrapTable}>
         <AssetTable
           title="MON PORTEFEUILLE"
@@ -102,7 +117,6 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
           percent={(data?.optimized_risk_level || 0) * -100}
         />
       </div>
-
       <div style={{ paddingTop: 10 }}>
         <div style={{ flex: 1 }}></div>
         <div style={{ flex: 1, justifyContent: "center" }}>
@@ -112,6 +126,10 @@ export default function LibertifySdk({ config, apiKey }: LibertifySdkProps) {
           </span>
         </div>
       </div>
+      <Button
+        style={{ marginTop: 10, alignSelf: "center" }}
+        title="VALIDER CETTE OPTIMISATION"
+      />
     </div>
   );
 }

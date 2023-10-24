@@ -45,7 +45,9 @@ const styles = createStyles({
     flexDirection: "column",
   },
   header: {
-    padding: 15,
+    padding: '0 15px',
+    height: 80,
+    alignItems: 'center'
   },
   textHeader: {
     color: "white",
@@ -54,7 +56,7 @@ const styles = createStyles({
   },
   percentHeader: {
     color: "white",
-    fontSize: 22,
+    fontSize: 30,
     fontFamily: "GTWalsheim-Bd",
   },
   flex1: {
